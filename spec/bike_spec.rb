@@ -1,23 +1,13 @@
-require "bike"
+# link to bike class
+require 'bike'
 
-
+# describing functionality of a specific class, that of bike
 describe Bike do
-	let(:a_bike){Bike.new}
 
-
-	it "is working" do
-		expect(a_bike.working?).to eq true
-	end
-
-	it "is broken" do	
-		a_bike.break! 
-		expect(a_bike.working?).to eq false
-	end
-
-	it 'can be fixed' do
-		a_bike.break!
-		a_bike.fix!
-		expect(a_bike.working?).to eq true
+it "should not be broken after we create it" do
+		bike = Bike.new
+		# expect is a method, the_bike is an instance
+		# be_broken is also a method
+	expect(bike).not_to be_broken
 	end
 end
-
