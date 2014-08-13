@@ -2,12 +2,12 @@ require './lib/docking_station'
 
 describe DockingStation do
 
-	let(:bike) {Bike.new}
+	# let(:bike) {Bike.new}
 	let(:station) {DockingStation.new(:capacity => 20)}
 
-	def fill_station(station)
-		20.times { station.dock(Bike.new)}
-	end
+	# def fill_station(station)
+	# 	20.times { station.dock(Bike.new)}
+	# end
 
 	# it "should be able to release broken bikes to the van" do
 	# 	broken_bike = Bike.new
@@ -51,8 +51,8 @@ describe DockingStation do
 	# 	expect(station.available_bikes).to eq([working_bike])
 	# end
 
-	# it "should allow setting default capacity on initialising" do
-	# 	expect(station.capacity).to eq(20)
-	# end
+	it "should allow setting default capacity on initialising" do
+		expect(station.capacity).to eq(20)
+	end
 
 end
