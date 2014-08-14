@@ -1,6 +1,9 @@
-module BikeContainer
+require './lib/errors'
 
+module BikeContainer
   DEFAULT_CAPACITY = 10
+
+# include BikeInclusionError
 
   def bikes
     @bikes ||= []
@@ -19,11 +22,12 @@ module BikeContainer
   end
 
   def dock(bike)
-    raise "There is no more room for bikes" if full?
+    raise FullContainerError.new("this #{self.class} is full") if full?
     bikes << bike
   end
 
   def release(bike)
+    raise EmptyContainerError.new("this #{self.class} is empty!") unless bikes.include?(bike)
     bikes.delete(bike)
   end
 
@@ -32,7 +36,14 @@ module BikeContainer
   end
 
   def available_bikes
-    bikes.reject {|bike| bike.broken? }
+    bikes.reject {|bike| bike.broken?}
   end
 
 end
+
+
+
+
+
+
+

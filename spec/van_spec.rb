@@ -1,6 +1,6 @@
 require './lib/van.rb'
-# require './lib/bike.rb'
-require "bike_container_spec"
+require './lib/bike.rb'
+# require "./spec/bike_container_spec"
 
 describe Van do
 

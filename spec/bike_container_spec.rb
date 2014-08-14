@@ -19,7 +19,9 @@ shared_examples "a bike container" do
 		expect(holder.bike_count).to eq(1)
 	end
 
-	it "should release a bike" do
+	it "should not be able to release a bike if this bike is nor included in the station" do
+		expect(holder.bike_count).to eq(0)
+		expect{holder.release(bike)}.to raise_error(EmptyContainerError)
 		holder.dock(bike)
 		holder.release(bike)
 		expect(holder.bike_count).to eq(0)
@@ -33,16 +35,15 @@ shared_examples "a bike container" do
 
 	it "should not accept a bike if it's full" do
 		fill_holder(holder)
-		expect(lambda{holder.dock(bike)}).to raise_error(RuntimeError)
+		expect(lambda{holder.dock(bike)}).to raise_error(FullContainerError)
 	end
 
-	context 'when renting bikes'
 	it "should provide the list of available bikes" do
 		working_bike, broken_bike = Bike.new, Bike.new
 		broken_bike.break!
-		holder.dock(working_bike)
+		holder.dock	(working_bike)
 		holder.dock(broken_bike)
-		expect(holder.available_bikes).to eq([working_bike])
+		expect(holder.available_bikes.count).to eq 1
 	end
 
 	it "should allow setting default capacity on initialising" do

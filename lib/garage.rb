@@ -8,16 +8,15 @@ include BikeContainer
 		self.capacity = options.fetch(:capacity, capacity)
 	end
 
-	alias_method :exit_dock, :dock
 
-	def dock(bike)
-		bike.fix! 
-		exit_dock(bike)
+	def collect(bike)
+		super
+		bike.fix!
 	end
-
 	# # this method 
 	# def garage_dock(bike)
 		
 	# end
+	alias_method :collect, :dock
 
 end
