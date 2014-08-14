@@ -23,7 +23,9 @@ module BikeContainer
 
   def dock(bike)
     raise FullContainerError.new("this #{self.class} is full") if full?
+    raise BikeInclusionError.new("this bike is already on #{self.class}") if bikes.include?(bike)
     bikes << bike
+
   end
 
   def release(bike)

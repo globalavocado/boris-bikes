@@ -43,10 +43,18 @@ shared_examples "a bike container" do
 		broken_bike.break!
 		holder.dock	(working_bike)
 		holder.dock(broken_bike)
-		expect(holder.available_bikes.count).to eq 1
+		expect(holder.available_bikes.count).to eq(1)
 	end
 
 	it "should allow setting default capacity on initialising" do
 		expect(holder.capacity).to eq(10)
+	end
+
+	it "should not be able to accept the same bike twice" do
+		expect(holder.bike_count).to eq(0) 
+		holder.dock(bike)
+		expect(holder.bike_count).to eq(1)
+		expect{holder.dock(bike)}.to raise_error(BikeInclusionError)
+		# expect(holder.bike_count).to eq(1)
 	end
 end
