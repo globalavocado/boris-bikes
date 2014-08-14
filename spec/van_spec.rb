@@ -1,8 +1,10 @@
 require './lib/van.rb'
-require './lib/bike.rb'
-require './lib/bike_container.rb'
+# require './lib/bike.rb'
+require "bike_container_spec"
 
 describe Van do
+
+	it_behaves_like "a bike container"
 
 	# it "only picks up broken bikes" do
 	# broken_bike = Bike.new
