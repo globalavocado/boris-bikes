@@ -57,4 +57,17 @@ shared_examples "a bike container" do
 		expect{holder.dock(bike)}.to raise_error(BikeInclusionError)
 		# expect(holder.bike_count).to eq(1)
 	end
+
+	it "should check whether the docking station is empty" do
+	expect(holder.is_empty?).to eq true
+	end
+
+	it "should give an error for a wrong argument when trying to release a bike" do
+		expect{holder.release("chickensandwich")}.to raise_error(WrongArgumentError)
+	end
+
+	it "should not allow you to dock anything that's not a bike" do
+		expect{holder.dock(holder)}.to raise_error(WrongClassError)
+		expect(holder.dock(bike)).to eq([bike])
+	end
 end

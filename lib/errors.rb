@@ -15,3 +15,15 @@ class FullContainerError < RuntimeError
 		super(message)
 	end
 end
+
+class WrongArgumentError < StandardError
+	def initialize(message)
+			super(message)
+	end
+end
+
+class WrongClassError < RuntimeError
+	def initialize(message)
+			super(message)
+		end
+	end
