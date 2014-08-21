@@ -39,11 +39,10 @@ shared_examples "a bike container" do
 	end
 
 	it "should provide the list of available bikes" do
-		working_bike, broken_bike = Bike.new, Bike.new
-		broken_bike.break!
+		working_bike, working_bike2 = Bike.new, Bike.new
 		holder.dock	(working_bike)
-		holder.dock(broken_bike)
-		expect(holder.available_bikes.count).to eq(1)
+		holder.dock(working_bike2)
+		expect(holder.available_bikes.count).to eq(2)
 	end
 
 	it "should allow setting default capacity on initialising" do
@@ -68,8 +67,7 @@ shared_examples "a bike container" do
 
 	it "should not allow you to dock anything that's not a bike" do
 		expect{holder.dock(holder)}.to raise_error(WrongClassError)
-		expect(holder.dock(bike)).to eq([bike])
 	end
 
-	
+
 end

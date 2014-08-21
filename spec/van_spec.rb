@@ -23,7 +23,7 @@ describe Van do
 		van.dock(broken_bike)
 		van.dropoff_to_garage(garage)
 		expect(van.broken_bikes.count).to eq 0
-		expect(garage.broken_bikes.count).to eq 1
+		expect(garage.available_bikes.count).to eq 1
 
 	end
 

@@ -9,14 +9,15 @@ include BikeContainer
 	end
 
 
-	def collect(bike)
+	def dock(bike)
 		super
 		bike.fix!
 	end
+
 	# # this method 
 	# def garage_dock(bike)
 		
 	# end
-	alias_method :collect, :dock
+	# alias_method :collect, :dock
 
 end
