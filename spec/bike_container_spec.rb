@@ -70,4 +70,6 @@ shared_examples "a bike container" do
 		expect{holder.dock(holder)}.to raise_error(WrongClassError)
 		expect(holder.dock(bike)).to eq([bike])
 	end
+
+	
 end

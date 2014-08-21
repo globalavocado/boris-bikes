@@ -10,6 +10,7 @@ end
 
 	def break!
 		@broken = true
+		self
 	end
 
 	def fix!
