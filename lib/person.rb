@@ -21,8 +21,4 @@ end
 		@hasbike.break!
 	end
 
-	# def report?
-	# 	report = "reported"
-	# end
-
 end
