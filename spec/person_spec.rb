@@ -7,7 +7,6 @@ describe Person do
 	let (:bike){Bike.new}
 
 	it 'is created without a bike' do
-		person = Person.new
 		expect(person.hasbike).to eq false
 	end
 
