@@ -5,17 +5,14 @@ shared_examples "a bike container" do
 
 	let(:bike) {Bike.new}
 	let(:holder) {described_class.new}
-
+	
 	def fill_holder(holder)
 		holder.capacity.times { holder.dock(Bike.new)}
 	end
 
 	it "should accept a bike" do
-		# expect dock to have 0 bikes
 		expect(holder.bike_count).to eq(0)
-		# docking a bike to the holder
 		holder.dock(bike)
-		# now it has one bike
 		expect(holder.bike_count).to eq(1)
 	end
 
@@ -40,7 +37,7 @@ shared_examples "a bike container" do
 
 	it "should provide the list of available bikes" do
 		working_bike, working_bike2 = Bike.new, Bike.new
-		holder.dock	(working_bike)
+		holder.dock(working_bike)
 		holder.dock(working_bike2)
 		expect(holder.available_bikes.count).to eq(2)
 	end
@@ -58,7 +55,7 @@ shared_examples "a bike container" do
 	end
 
 	it "should check whether the docking station is empty" do
-	expect(holder.is_empty?).to eq true
+		expect(holder.is_empty?).to eq true
 	end
 
 	it "should give an error for a wrong argument when trying to release a bike" do
